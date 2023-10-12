@@ -1,30 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>React Router</title>
-    <script type="text/javascript">
-        var pathSegmentsToKeep = 1;
-
-        var l = window.location;
-        l.replace(
-            l.protocol +
-            "//" +
-            l.hostname +
-            (l.port ? ":" + l.port : "") +
-            l.pathname
-                .split("/")
-                .slice(0, 1 + pathSegmentsToKeep)
-                .join("/") +
-            "/?/" +
-            l.pathname.slice(1).split("/").slice(pathSegmentsToKeep).join("/").replace(/&/g, "~and~") +
-            (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
-            l.hash
-        );
-    </script>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L-Monopoly</title>
+  <script type="module" crossorigin src="/Monopoly/assets/index-91259a13.js"></script>
+  <link rel="stylesheet" href="/Monopoly/assets/index-d337b3b7.css">
 </head>
 
-<body></body>
+<body>
+
+  <div id="root"></div>
+  
+</body>
 
 </html>
