@@ -1,5 +1,5 @@
 import Peer, { DataConnection } from "peerjs";
-import { TranslateCode, code } from "./code.env";
+import { generateCode } from "./code";
 
 export function io(uri: string): Promise<Socket> {
     return new Promise((resolve, reject) => {
@@ -99,8 +99,8 @@ export class Server {
 
         while (error) {
             try {
-                _code = code();
-                _socket = new Peer(TranslateCode(_code), {
+                _code = generateCode();
+                _socket = new Peer(_code, {
                     debug: 0,
                     secure: true,
                 });
