@@ -1,5 +1,8 @@
-export function generateCode(length: number = 5): string {
-    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+import crypto from 'crypto';
+
+// Generate a random code of a given length
+export function generateCode(length: number = 6): string {
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
     let result = '';
   
     for (let i = 0; i < length; i++) {
@@ -8,4 +11,9 @@ export function generateCode(length: number = 5): string {
     }
   
     return result;
+}
+
+// Turn the code into a random hash
+export function generateHash(code: string): string {
+    return crypto.createHash('sha256').update(code).digest('hex');
 }

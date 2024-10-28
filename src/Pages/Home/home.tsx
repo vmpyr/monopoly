@@ -16,7 +16,7 @@ import { main as onlineServer } from "../../assets/server.ts";
 import { main as botServer } from "../../assets/bot/server.ts";
 import { main as runBot } from "../../assets/bot/bot.ts";
 import Slider from "../../components/utils/slider.tsx";
-// import { TranslateCode } from "../../assets/code.env.ts";
+import { generateHash } from "../../assets/code.ts";
 import { CookieManager } from "../../assets/CookieManager.ts";
 
 export default function Home() {
@@ -110,7 +110,7 @@ export default function Home() {
         }
         SetDisabled(true);
 
-        const address = addr as string;
+        const address = generateHash(addr) as string;
         var socket: Socket;
         // const address = "localhost"
         try {
@@ -168,9 +168,9 @@ export default function Home() {
 
             botServer(async (server) => {
                 SetDisabled(true);
-                const socket = await io(server.code);
+                const socket = await io(generateHash(server.code));
                 for (const x of bots) {
-                    runBot(server.code, x);
+                    runBot(generateHash(server.code), x);
                 }
                 socket.on("state", (args: number) => {
                     switch (args) {
