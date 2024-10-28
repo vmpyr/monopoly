@@ -17,5 +17,7 @@ export function generateHash(str: string): string {
     for (let i = 0; i < str.length; i++) {
         hash = (hash * 33) ^ str.charCodeAt(i); // Update hash
     }
-    return (hash >>> 0).toString(); // Convert to unsigned
+    hash = hash >>> 0; // Convert to unsigned
+    let hash_str = hash.toString() + (2 * hash).toString() + (3 * hash).toString(); // Convert to str
+    return hash_str
 }
