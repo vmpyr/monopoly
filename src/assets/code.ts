@@ -1,5 +1,3 @@
-import crypto from 'crypto';
-
 // Generate a random code of a given length
 export function generateCode(length: number = 6): string {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
@@ -14,6 +12,10 @@ export function generateCode(length: number = 6): string {
 }
 
 // Turn the code into a random hash
-export function generateHash(code: string): string {
-    return crypto.createHash('sha256').update(code).digest('hex');
+export function generateHash(str: string): string {
+    let hash = 5381; // Starting point
+    for (let i = 0; i < str.length; i++) {
+        hash = (hash * 33) ^ str.charCodeAt(i); // Update hash
+    }
+    return (hash >>> 0).toString(); // Convert to unsigned
 }
